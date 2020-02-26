@@ -1,57 +1,1064 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="http://104.131.177.38/demo/wp/iamx/xmlrpc.php">
+    <title>Iamx &#8211; Creative Personal Resume WordPress Theme</title>
+                        <script>
+                            /* You can add more configuration options to webfontloader by previously defining the WebFontConfig with your options */
+                            if ( typeof WebFontConfig === "undefined" ) {
+                                WebFontConfig = new Object();
+                            }
+                            WebFontConfig['google'] = {families: ['Roboto:100,300,400,500,700,900,100italic,300italic,400italic,500italic,700italic,900italic']};
 
-    <title>Gillian Kaufman</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+                            (function() {
+                                var wf = document.createElement( 'script' );
+                                wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js';
+                                wf.type = 'text/javascript';
+                                wf.async = 'true';
+                                var s = document.getElementsByTagName( 'script' )[0];
+                                s.parentNode.insertBefore( wf, s );
+                            })();
+                        </script>
+                        <link rel='dns-prefetch' href='//maps.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Iamx &raquo; Feed" href="http://104.131.177.38/demo/wp/iamx/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Iamx &raquo; Comments Feed" href="http://104.131.177.38/demo/wp/iamx/comments/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"wpemoji":"http:\/\/104.131.177.38\/demo\/wp\/iamx\/wp-includes\/js\/wp-emoji.js?ver=5.2.5","twemoji":"http:\/\/104.131.177.38\/demo\/wp\/iamx\/wp-includes\/js\/twemoji.js?ver=5.2.5"}};
+			/**
+ * @output wp-includes/js/wp-emoji-loader.js
+ */
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+( function( window, document, settings ) {
+	var src, ready, ii, tests;
+
+	// Create a canvas element for testing native browser support of emoji.
+	var canvas = document.createElement( 'canvas' );
+	var context = canvas.getContext && canvas.getContext( '2d' );
+
+	/**
+	 * Checks if two sets of Emoji characters render the same visually.
+	 *
+	 * @since 4.9.0
+	 *
+	 * @private
+	 *
+	 * @param {number[]} set1 Set of Emoji character codes.
+	 * @param {number[]} set2 Set of Emoji character codes.
+	 *
+	 * @return {boolean} True if the two sets render the same.
+	 */
+	function emojiSetsRenderIdentically( set1, set2 ) {
+		var stringFromCharCode = String.fromCharCode;
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, canvas.width, canvas.height );
+		context.fillText( stringFromCharCode.apply( this, set1 ), 0, 0 );
+		var rendered1 = canvas.toDataURL();
+
+		// Cleanup from previous test.
+		context.clearRect( 0, 0, canvas.width, canvas.height );
+		context.fillText( stringFromCharCode.apply( this, set2 ), 0, 0 );
+		var rendered2 = canvas.toDataURL();
+
+		return rendered1 === rendered2;
+	}
+
+	/**
+	 * Detects if the browser supports rendering emoji or flag emoji.
+	 *
+	 * Flag emoji are a single glyph made of two characters, so some browsers
+	 * (notably, Firefox OS X) don't support them.
+	 *
+	 * @since 4.2.0
+	 *
+	 * @private
+	 *
+	 * @param {string} type Whether to test for support of "flag" or "emoji".
+	 *
+	 * @return {boolean} True if the browser can render emoji, false if it cannot.
+	 */
+	function browserSupportsEmoji( type ) {
+		var isIdentical;
+
+		if ( ! context || ! context.fillText ) {
+			return false;
+		}
+
+		/*
+		 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+		 * it doesn't work when the font is bolder than 500 weight. So, we
+		 * check for bold rendering support to avoid invisible emoji in Chrome.
+		 */
+		context.textBaseline = 'top';
+		context.font = '600 32px Arial';
+
+		switch ( type ) {
+			case 'flag':
+				/*
+				 * Test for UN flag compatibility. This is the least supported of the letter locale flags,
+				 * so gives us an easy test for full support.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly ([U] + [N]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					[ 0xD83C, 0xDDFA, 0xD83C, 0xDDF3 ],
+					[ 0xD83C, 0xDDFA, 0x200B, 0xD83C, 0xDDF3 ]
+				);
+
+				if ( isIdentical ) {
+					return false;
+				}
+
+				/*
+				 * Test for English flag compatibility. England is a country in the United Kingdom, it
+				 * does not have a two letter locale code but rather an five letter sub-division code.
+				 *
+				 * To test for support, we try to render it, and compare the rendering to how it would look if
+				 * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					[ 0xD83C, 0xDFF4, 0xDB40, 0xDC67, 0xDB40, 0xDC62, 0xDB40, 0xDC65, 0xDB40, 0xDC6E, 0xDB40, 0xDC67, 0xDB40, 0xDC7F ],
+					[ 0xD83C, 0xDFF4, 0x200B, 0xDB40, 0xDC67, 0x200B, 0xDB40, 0xDC62, 0x200B, 0xDB40, 0xDC65, 0x200B, 0xDB40, 0xDC6E, 0x200B, 0xDB40, 0xDC67, 0x200B, 0xDB40, 0xDC7F ]
+				);
+
+				return ! isIdentical;
+			case 'emoji':
+				/*
+				 * Love is love.
+				 *
+				 * To test for Emoji 12 support, try to render a new emoji: men holding hands, with different skin
+				 * tone modifiers.
+				 *
+				 * When updating this test for future Emoji releases, ensure that individual emoji that make up the
+				 * sequence come from older emoji standards.
+				 */
+				isIdentical = emojiSetsRenderIdentically(
+					[0xD83D, 0xDC68, 0xD83C, 0xDFFE, 0x200D, 0xD83E, 0xDD1D, 0x200D, 0xD83D, 0xDC68, 0xD83C, 0xDFFC],
+					[0xD83D, 0xDC68, 0xD83C, 0xDFFE, 0x200B, 0xD83E, 0xDD1D, 0x200B, 0xD83D, 0xDC68, 0xD83C, 0xDFFC]
+				);
+
+				return ! isIdentical;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Adds a script to the head of the document.
+	 *
+	 * @ignore
+	 *
+	 * @since 4.2.0
+	 *
+	 * @param {Object} src The url where the script is located.
+	 * @return {void}
+	 */
+	function addScript( src ) {
+		var script = document.createElement( 'script' );
+
+		script.src = src;
+		script.defer = script.type = 'text/javascript';
+		document.getElementsByTagName( 'head' )[0].appendChild( script );
+	}
+
+	tests = Array( 'flag', 'emoji' );
+
+	settings.supports = {
+		everything: true,
+		everythingExceptFlag: true
+	};
+
+	/*
+	 * Tests the browser support for flag emojis and other emojis, and adjusts the
+	 * support settings accordingly.
+	 */
+	for( ii = 0; ii < tests.length; ii++ ) {
+		settings.supports[ tests[ ii ] ] = browserSupportsEmoji( tests[ ii ] );
+
+		settings.supports.everything = settings.supports.everything && settings.supports[ tests[ ii ] ];
+
+		if ( 'flag' !== tests[ ii ] ) {
+			settings.supports.everythingExceptFlag = settings.supports.everythingExceptFlag && settings.supports[ tests[ ii ] ];
+		}
+	}
+
+	settings.supports.everythingExceptFlag = settings.supports.everythingExceptFlag && ! settings.supports.flag;
+
+	// Sets DOMReady to false and assigns a ready function to settings.
+	settings.DOMReady = false;
+	settings.readyCallback = function() {
+		settings.DOMReady = true;
+	};
+
+	// When the browser can not render everything we need to load a polyfill.
+	if ( ! settings.supports.everything ) {
+		ready = function() {
+			settings.readyCallback();
+		};
+
+		/*
+		 * Cross-browser version of adding a dom ready event.
+		 */
+		if ( document.addEventListener ) {
+			document.addEventListener( 'DOMContentLoaded', ready, false );
+			window.addEventListener( 'load', ready, false );
+		} else {
+			window.attachEvent( 'onload', ready );
+			document.attachEvent( 'onreadystatechange', function() {
+				if ( 'complete' === document.readyState ) {
+					settings.readyCallback();
+				}
+			} );
+		}
+
+		src = settings.source || {};
+
+		if ( src.concatemoji ) {
+			addScript( src.concatemoji );
+		} else if ( src.wpemoji && src.twemoji ) {
+			addScript( src.twemoji );
+			addScript( src.wpemoji );
+		}
+	}
+
+} )( window, document, window._wpemojiSettings );
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='http://104.131.177.38/demo/wp/iamx/wp-includes/css/dist/block-library/style.css?ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='zilla-likes-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/tt-plugin/inc/post-likes/styles/zilla-likes.css?ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.4' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-fontawesome-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/font-awesome.min.css?ver=4.5' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-shortcode-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/shortcode.css?ver=4.5' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-flaticon-stroke-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/fonts/flaticon/flaticon.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-bootstrap-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/bootstrap.min.css?ver=3.3.6' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-owl-carousel-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/owl.carousel.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-owl-theme-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/owl.theme.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-animate-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/animate.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-magnific-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/magnific-popup.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-stylesheet-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/style.css?ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-responsive-css-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/css/responsive.css' type='text/css' media='all' />
+<link rel='stylesheet' id='tt-custom-style-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/custom-style.php' type='text/css' media='all' />
+<link rel='stylesheet' id='js_composer_front-css'  href='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=4.9.2' type='text/css' media='all' />
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-includes/js/jquery/jquery-migrate.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var zilla_likes = {"ajaxurl":"http:\/\/104.131.177.38\/demo\/wp\/iamx\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/tt-plugin/inc/post-likes/scripts/zilla-likes.js?ver=5.2.5'></script>
+<link rel='https://api.w.org/' href='http://104.131.177.38/demo/wp/iamx/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://104.131.177.38/demo/wp/iamx/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://104.131.177.38/demo/wp/iamx/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.2.5" />
+<link rel="canonical" href="http://104.131.177.38/demo/wp/iamx/" />
+<link rel='shortlink' href='http://104.131.177.38/demo/wp/iamx/' />
+<link rel="alternate" type="application/json+oembed" href="http://104.131.177.38/demo/wp/iamx/wp-json/oembed/1.0/embed?url=http%3A%2F%2F104.131.177.38%2Fdemo%2Fwp%2Fiamx%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://104.131.177.38/demo/wp/iamx/wp-json/oembed/1.0/embed?url=http%3A%2F%2F104.131.177.38%2Fdemo%2Fwp%2Fiamx%2F&#038;format=xml" />
+<meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress."/>
+<!--[if lte IE 9]><link rel="stylesheet" type="text/css" href="http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><!--[if IE  8]><link rel="stylesheet" type="text/css" href="http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/css/vc-ie8.min.css" media="screen"><![endif]--><style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1467136222667{background-color: #ffffff !important;}.vc_custom_1467136235256{padding-top: 120px !important;background-color: #ffffff !important;}.vc_custom_1459810557797{padding-top: 50px !important;padding-bottom: 100px !important;background-color: #ffffff !important;}.vc_custom_1467136246705{padding-top: 120px !important;padding-bottom: 100px !important;background-color: #1a1e23 !important;}.vc_custom_1467136374326{padding-top: 120px !important;padding-bottom: 110px !important;background-color: #ffffff !important;}.vc_custom_1467136508118{padding-top: 130px !important;padding-bottom: 100px !important;}.vc_custom_1465280214674{padding-top: 110px !important;padding-bottom: 110px !important;}.vc_custom_1467136533390{padding-top: 125px !important;padding-bottom: 100px !important;}.vc_custom_1459716795561{margin-top: 100px !important;margin-bottom: 100px !important;}.vc_custom_1465200538374{margin-top: 50px !important;margin-bottom: 100px !important;}.vc_custom_1462078468210{background-image: url(http://localhost/iamx/wp-content/uploads/2016/01/Candidate-political.jpg?id=2928) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1459746613009{background-color: #ffffff !important;}.vc_custom_1465201911551{padding-bottom: 35px !important;}.vc_custom_1465202259125{padding-top: 10px !important;padding-bottom: 30px !important;}.vc_custom_1459875720144{padding-bottom: 50px !important;}.vc_custom_1462435414479{padding-top: 115px !important;padding-bottom: 115px !important;}.vc_custom_1460851505925{margin-bottom: 50px !important;}.vc_custom_1460352398196{margin-bottom: 30px !important;}.vc_custom_1460353252369{margin-bottom: 50px !important;}.vc_custom_1464627285804{margin-bottom: 40px !important;}</style><noscript><style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript></head>
+
+<body id="home" class="home page-template page-template-page-templates page-template-template-home page-template-page-templatestemplate-home-php page page-id-2320 header-banner-one wpb-js-composer js-comp-ver-4.9.2 vc_responsive" data-spy="scroll" data-target=".navbar" data-offset="100">
+            <div id="preloader" style="background-color: #ffffff">
+            <div id="status">
+                <div class="status-mes" style="background-image: url(http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/images/preloader.gif);"></div>
+            </div>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-    <h1>Gillian Kaufman Projects</h1>
+    
+    <section class="header-banner banner-style-one tt-fullHeight" data-parallax="scroll" data-image-src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2015/11/home2.jpg">
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+
+	<div class="home-banner-overlay"></div>
+	<div class="intro">
+
+					<div class="intro-sub">I am Gillian Kaufman</div>
+		
+					<h1>Program  <span> Developer</span></h1>
+				
+		<div class="intro-description">
+			I am a Junior at USC Upstate getting a Bachelor's in Computer Information Systems.		</div> <!-- .intro-description -->
+		
+					<div class="social-icons">
+    <ul class="list-inline">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                </ul>
+</div> <!-- /.social-icons -->			</div> <!-- .intro -->
+
+			<div class="mouse-icon">
+			<div class="wheel">
+			</div>
+				<a class="scroll" href="#home-banner"></a>
+		</div>
+	</section>
+<span class="sr-only" id="home-banner"></span>
+    <div class="header-wrapper">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".mobile-toggle">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <div class="navbar-brand">
+                        <h1>
+                            <a href="http://104.131.177.38/demo/wp/iamx/" title="Iamx">
+                                
+                                    <img class="hidden-xs" src="http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/images/logo.png" data-at2x="http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/images/logo2x.png" alt="Iamx"/>
+                                    <img class="visible-xs" src="http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/images/logo.png" data-at2x="http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/images/logo2x.png" alt="Iamx"/>
+                                                            </a>
+                        </h1>
+                    </div> <!-- .navbar-brand -->
+                </div> <!-- .navbar-header -->
+
+                <div class="main-menu-wrapper hidden-xs clearfix">
+                    <div class="main-menu">                   
+                        <ul id="menu-primary-menu" class="menu nav navbar-nav navbar-right"><li id="menu-item-3549" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3549  has-menu-child"><a title="Home" href="#home">Home</a></li>
+<li id="menu-item-3550" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3550  has-menu-child"><a title="About" href="#about">About</a></li>
+<li id="menu-item-3551" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3551  has-menu-child"><a title="Resume" href="#resume">Resume</a></li>
+<li id="menu-item-3552" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3552  has-menu-child"><a title="Skills" href="#skills">Skills</a></li>
+<li id="menu-item-3553" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3553  has-menu-child"><a title="Works" href="#works">Works</a></li>
+<li id="menu-item-3554" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3554  has-menu-child"><a title="Blog" href="#blog">Blog</a></li>
+<li id="menu-item-3555" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3555  has-menu-child"><a title="Contact" href="#contact">Contact</a></li>
+</ul>                    </div>
+                </div> <!-- /navbar-collapse -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="visible-xs">
+                    <div class="mobile-menu collapse navbar-collapse mobile-toggle">
+                        <ul id="menu-primary-menu-1" class="menu nav navbar-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3549  has-menu-child"><a title="Home" href="#home">Home</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3550  has-menu-child"><a title="About" href="#about">About</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3551  has-menu-child"><a title="Resume" href="#resume">Resume</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3552  has-menu-child"><a title="Skills" href="#skills">Skills</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3553  has-menu-child"><a title="Works" href="#works">Works</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3554  has-menu-child"><a title="Blog" href="#blog">Blog</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3555  has-menu-child"><a title="Contact" href="#contact">Contact</a></li>
+</ul>                    </div> <!-- /.navbar-collapse -->
+                </div>
+            </div><!-- .container-->
+        </nav>
+    </div> <!-- .header-wrapper -->
+
+
+	
+	
+		<section id="about" class="vc_row section-wrapper vc_custom_1467136222667 vc_row-has-fill"><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+    <div class="section-intro  text-center  vc_custom_1459716795561">
+        <h2 style="color:#282828" class="section-title wow fadeInUp">About Me</h2>
+
+                
+        
+                    <span class="separator" style="background-color:#dd3333"><span style="background-color:#dd3333"></span></span>
+        
+    </div> <!-- .section-intro -->
+
+<div class="col-md-4 col-md-push-8   vc_custom_1465200538374">
+    <div class="biography">
+        <div class="myphoto">
+                        <img class="img-responsive" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2015/11/myphoto-1.jpg" alt="">
+            <div class="img-frame"></div>
+        </div>
+        <ul>
+            
+                            <li><strong>Name:&nbsp;</strong>John Doe </li>
+                            <li><strong>Date of birth:&nbsp;</strong>05 Dec 1993 </li>
+                            <li><strong>Address:&nbsp;</strong>239/2 Awesome Street, USA </li>
+                            <li><strong>Nationality:&nbsp;</strong>American </li>
+                            <li><strong>Phone:&nbsp;</strong>(000) 1234 56789 </li>
+                            <li><strong>Email:&nbsp;</strong>yourmail@iamx.com </li>
+                    </ul>
+    </div>
+</div>
+
+<div class="col-md-8 col-md-pull-4">
+    <div class="short-info wow fadeInUp">
+<h3>Objective</h3>
+<p>An opportunity to work and upgrade oneself, as well as being involved in an organization that believes in gaining a competitive edge and giving back to the community. I&#8217;m presently expanding my solid experience in UI / UX design. I focus on using my interpersonal skills to build good user experience and create a strong interest in my employers. I hope to develop skills in motion design and my knowledge of the Web, and become an honest asset to the business. As an individual, I&#8217;m self-confident you’ll find me creative, funny and naturally passionate. I’m a forward thinker, which others may find inspiring when working as a team.</p>
+</div>
+<div class="short-info wow fadeInUp">
+<h3>What I Do ?</h3>
+<p>I have been working as a web interface designer since. I have a love of clean, elegant styling, and I have lots of experience in the production of CSS3 and HTML5 for modern websites. I loving creating awesome as per my clients’ need. I think user experience when I try to craft something for my clients. Making a design awesome.</p>
+<ul class="list-check">
+<li>User Experience Design</li>
+<li>Interface Design</li>
+<li>Product Design</li>
+<li>Branding Design</li>
+<li>Digital Painting</li>
+<li>Video Editing</li>
+</ul>
+</div>
+    <div class="my-signature">
+                  <img src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2015/11/sign.png" alt="">
+    </div>
+
+    <div class="download-button">
+      <a class="btn btn-info btn-lg" href="#"><i class="fa fa-paper-plane"></i>Send me message</a>
+      <a class="btn btn-primary btn-lg" href="#"><i class="fa fa-download"></i>Download my cv</a>
+    </div>
+</div>
+
+</div></div></div></div></section><section class="vc_row section-wrapper"><div class="container-fullwidth"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+    <!-- Video Section -->
+    <section id="video" class="video-section" style="background-image: url(http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2015/11/video-bg.jpg); min-height: 500px">
+        <div class="tf-bg-overlay">
+            <div class="video-intro">
+                                        <a class="popup-video" href="https://www.youtube.com/watch?v=_JENG0Z8AMk"> <i class="fa fa-play"></i>  </a>
+                                    <h2 style="color:#ffffff">Video Introducing</h2>
+            </div>
+        </div> <!--/.overlay-->
+    </section> <!-- /.Video Section -->
+</div></div></div></div></section><section id="resume" class="vc_row section-wrapper vc_custom_1467136235256 vc_row-has-fill"><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+    <div class="section-intro  text-center  vc_custom_1459746613009">
+        <h2 style="" class="section-title wow fadeInUp">RESUME</h2>
+
+                
+        
+        
+    </div> <!-- .section-intro -->
+
+</div></div></div></div></section><section class="vc_row section-wrapper vc_custom_1459810557797 vc_row-has-fill"><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+
+        <div class="col-md-12  ">
+            <div class="resume-title">
+                <h3 style="<br />
+<b>Notice</b>:  Undefined variable: education_title_color in <b>/var/www/html/demo/wp/iamx/wp-content/themes/iamx/visual-composer/shortcodes/tt_resume_section.php</b> on line <b>19</b><br />
+">Education</h3>
+            </div>
+            <div class="resume">
+                <ul class="timeline">
+
+                    
+                                            <li class="" style="color: ">
+                            <div class="posted-date">
+                                <span class="month">2007-2011</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>BACHELOR DEGREE CERTIFICATE</h3>
+                                        <span>BA(Hons) in UI Engineering, Arts University, Pabna, USA</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p>I have completed UI Engineering degree from ABC University, Boston, USA at feel the charm of existence in this spot, which was creat.</p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div><!-- /timeline-panel -->
+                        </li>                        
+                                            <li class="timeline-inverted" style="color: ">
+                            <div class="posted-date">
+                                <span class="month">2004-2006</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>HIGHER SECONDARY CERTIFICATE</h3>
+                                        <span>Typography Arts, FA College, New York, USA</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p>From this college of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend.</p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div><!-- /timeline-panel -->
+                        </li>                        
+                                            <li class="" style="color: ">
+                            <div class="posted-date">
+                                <span class="month">2000-2003</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>SECONDARY SCHOOL CERTIFICATE</h3>
+                                        <span>Creative Arts, Julius Jr. school, USA</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p>I was awesome at arts, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy.</p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div><!-- /timeline-panel -->
+                        </li>                        
+                                            <li class="timeline-inverted" style="color: ">
+                            <div class="posted-date">
+                                <span class="month">2011-2013</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>JUNIOR UI DESIGNER</h3>
+                                        <span>XYZ Design Home, One Street, Boston</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p>I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend.</p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div><!-- /timeline-panel -->
+                        </li>                        
+                                            <li class="" style="color: ">
+                            <div class="posted-date">
+                                <span class="month">2013-2015</span>
+                            </div><!-- /posted-date -->
+
+                            <div class="timeline-panel wow fadeInUp">
+                                <div class="timeline-content">
+                                    <div class="timeline-heading">
+                                        <h3>LEAD UX CONSULTANT</h3>
+                                        <span>Lucky8 Designing Firm, California</span>
+                                    </div><!-- /timeline-heading -->
+
+                                    <div class="timeline-body">
+                                        <p>Completely provide access to seamless manufactured products before functionalized synergy. Progressively redefine competitive.</p>
+                                    </div><!-- /timeline-body -->
+                                </div> <!-- /timeline-content -->
+                            </div><!-- /timeline-panel -->
+                        </li>                        
+                    
+                </ul>
+            </div>
+        </div>       
+               
+
+
+</div></div></div></div></section><section id="skills" class="vc_row section-wrapper vc_custom_1467136246705 vc_row-has-fill"><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+    <div class="section-intro  text-center  vc_custom_1465201911551">
+        <h2 style="color:#ffffff" class="section-title wow fadeInUp">Skills</h2>
+
+                
+        
+        
+    </div> <!-- .section-intro -->
+
+<div class="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-content-middle vc_row-flex"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner "><div class="wpb_wrapper"><div class="vc_progress_bar wpb_content_element  vc_progress-bar-color-bar_grey"><div class="vc_general vc_single_bar"><small class="vc_label">UX Design <span class="vc_label_units">95%</span></small><span class="vc_bar " data-percentage-value="95" data-value="95" style="background-color: #68c3a3;"></span></div><div class="vc_general vc_single_bar"><small class="vc_label">Visual Design <span class="vc_label_units">80%</span></small><span class="vc_bar " data-percentage-value="80" data-value="80" style="background-color: #68c3a3;"></span></div><div class="vc_general vc_single_bar"><small class="vc_label">Business Design <span class="vc_label_units">75%</span></small><span class="vc_bar " data-percentage-value="75" data-value="75" style="background-color: #68c3a3;"></span></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner "><div class="wpb_wrapper"><div class="vc_progress_bar wpb_content_element"><div class="vc_general vc_single_bar"><small class="vc_label">Branding Design <span class="vc_label_units">95%</span></small><span class="vc_bar " data-percentage-value="95" data-value="95" style="background-color: #68c3a3;"></span></div><div class="vc_general vc_single_bar"><small class="vc_label">Motion Graphic <span class="vc_label_units">80%</span></small><span class="vc_bar " data-percentage-value="80" data-value="80" style="background-color: #68c3a3;"></span></div><div class="vc_general vc_single_bar"><small class="vc_label">Flyers Designing <span class="vc_label_units">75%</span></small><span class="vc_bar " data-percentage-value="75" data-value="75" style="background-color:#68c3a3;"></span></div></div></div></div></div></div><h4 style="font-size: 24px;color: #ffffff;line-height: 24px;text-align: center;font-family:Roboto;font-weight:700;font-style:normal" class="vc_custom_heading vc_custom_1465202259125">MORE SKILLS</h4><div class="vc_row wpb_row vc_inner vc_row-fluid"><div class="wpb_column vc_column_container vc_col-sm-2"><div class="vc_column-inner "><div class="wpb_wrapper"><div class= "vc_pie_chart wpb_content_element" data-pie-value="91" data-pie-label-value="91" data-pie-units="%" data-pie-color="#68c3a2"><div class="wpb_wrapper"><div class="vc_pie_wrapper"><span class="vc_pie_chart_back" style="border-color: #68c3a2"></span><span class="vc_pie_chart_value"></span><canvas width="101" height="101"></canvas></div><h4 class="wpb_heading wpb_pie_chart_heading">Leadership</h4></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-2"><div class="vc_column-inner "><div class="wpb_wrapper"><div class= "vc_pie_chart wpb_content_element" data-pie-value="23" data-pie-label-value="23" data-pie-units="%" data-pie-color="#68c3a2"><div class="wpb_wrapper"><div class="vc_pie_wrapper"><span class="vc_pie_chart_back" style="border-color: #68c3a2"></span><span class="vc_pie_chart_value"></span><canvas width="101" height="101"></canvas></div><h4 class="wpb_heading wpb_pie_chart_heading">Creativity</h4></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-2"><div class="vc_column-inner "><div class="wpb_wrapper"><div class= "vc_pie_chart wpb_content_element" data-pie-value="68" data-pie-label-value="68" data-pie-units="%" data-pie-color="#68c3a2"><div class="wpb_wrapper"><div class="vc_pie_wrapper"><span class="vc_pie_chart_back" style="border-color: #68c3a2"></span><span class="vc_pie_chart_value"></span><canvas width="101" height="101"></canvas></div><h4 class="wpb_heading wpb_pie_chart_heading">Management</h4></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-2"><div class="vc_column-inner "><div class="wpb_wrapper"><div class= "vc_pie_chart wpb_content_element" data-pie-value="68" data-pie-label-value="68" data-pie-units="%" data-pie-color="#68c3a2"><div class="wpb_wrapper"><div class="vc_pie_wrapper"><span class="vc_pie_chart_back" style="border-color: #68c3a2"></span><span class="vc_pie_chart_value"></span><canvas width="101" height="101"></canvas></div><h4 class="wpb_heading wpb_pie_chart_heading">Branding</h4></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-2"><div class="vc_column-inner "><div class="wpb_wrapper"><div class= "vc_pie_chart wpb_content_element" data-pie-value="68" data-pie-label-value="68" data-pie-units="%" data-pie-color="#68c3a2"><div class="wpb_wrapper"><div class="vc_pie_wrapper"><span class="vc_pie_chart_back" style="border-color: #68c3a2"></span><span class="vc_pie_chart_value"></span><canvas width="101" height="101"></canvas></div><h4 class="wpb_heading wpb_pie_chart_heading">Marketing</h4></div></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-2"><div class="vc_column-inner "><div class="wpb_wrapper"><div class= "vc_pie_chart wpb_content_element" data-pie-value="68" data-pie-label-value="68" data-pie-units="%" data-pie-color="#68c3a2"><div class="wpb_wrapper"><div class="vc_pie_wrapper"><span class="vc_pie_chart_back" style="border-color: #68c3a2"></span><span class="vc_pie_chart_value"></span><canvas width="101" height="101"></canvas></div><h4 class="wpb_heading wpb_pie_chart_heading">Motivation</h4></div></div></div></div></div></div></div></div></div></div></section><section id="works" class="vc_row section-wrapper vc_custom_1467136374326 vc_row-has-fill"><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+    <div class="section-intro  text-center  vc_custom_1459875720144">
+        <h2 style="" class="section-title wow fadeInUp">Works</h2>
+
+                
+        
+        
+    </div> <!-- .section-intro -->
+
+		
+	<div class="reformation-wrap ">
+		
+
+				<ul class="list-inline" id="filter">
+					<li><a class="active" data-group="all">All</a></li>
+											<li>
+							<a data-group="design">Design</a>
+						</li>
+											<li>
+							<a data-group="identity">Identity</a>
+						</li>
+											<li>
+							<a data-group="interface">Interface</a>
+						</li>
+											<li>
+							<a data-group="web">Web</a>
+						</li>
+									</ul>
+
+
+		
+		<div class="row">
+			<div class="tt-grid">
+				
+				
+					<!-- the loop -->
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["identity","interface"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-3.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title-9/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-3.jpg" class="img-responsive wp-post-image" alt="MaxRank" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-3.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-3-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-3-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-3-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-3-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>MaxRank</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["identity","interface","web"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-2.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title-8/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-2.jpg" class="img-responsive wp-post-image" alt="Mr. Lorem" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-2.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-2-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-2-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-2-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-2-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>Mr. Lorem</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["interface","web"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-7.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title-7/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-7.jpg" class="img-responsive wp-post-image" alt="Kalni" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-7.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-7-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-7-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-7-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-7-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>Kalni</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["design","identity","web"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-4.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title-6/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-4.jpg" class="img-responsive wp-post-image" alt="Maacuni" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-4.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-4-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-4-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-4-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-4-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>Maacuni</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["design","interface"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-5.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title-5/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-5.jpg" class="img-responsive wp-post-image" alt="DX. Theme" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-5.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-5-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-5-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-5-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-5-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>DX. Theme</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["design","identity","web"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-6.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title-4/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-6.jpg" class="img-responsive wp-post-image" alt="Noriam" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-6.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-6-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-6-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-6-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-6-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>Noriam</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["design","web"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-8.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title-3/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-8.jpg" class="img-responsive wp-post-image" alt="GASICA" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-8.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-8-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-8-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-8-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-8-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>GASICA</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+					
+			            <div class="portfolio-item col-xs-12 col-sm-4 col-md-3 " data-groups='["design","identity","interface"]'>
+			              <div class="portfolio-bg">
+			                <div class="portfolio">
+			                  <div class="tt-overlay"></div>
+			                  <div class="links">
+			                    <a class="image-link" href="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-1.jpg"><i class="fa fa-search-plus"></i></a>
+			                    <a href="http://104.131.177.38/demo/wp/iamx/blog/work/portfolio-title/"><i class="fa fa-link"></i></a>                          
+			                  </div><!-- /.links -->
+								<img width="800" height="600" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-1.jpg" class="img-responsive wp-post-image" alt="Nth App" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-1.jpg 800w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-1-300x225.jpg 300w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-1-768x576.jpg 768w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-1-127x95.jpg 127w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/portfolio-1-200x150.jpg 200w" sizes="(max-width: 800px) 100vw, 800px" />			                  
+			                  <div class="portfolio-info">
+			                    <h3>Nth App</h3>
+			                  </div><!-- /.portfolio-info -->
+			                </div><!-- /.portfolio -->
+			              </div><!-- /.portfolio-bg -->
+			            </div><!-- /.portfolio-item -->
+
+
+										<!-- end of the loop -->
+
+					
+								
+			</div> <!-- .tt-grid -->
+		</div> <!-- .row -->
+
+	</div> <!-- .reformation-wrap -->
+
+</div></div></div></div></section><section data-vc-parallax="1.5" data-vc-parallax-image="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2015/11/counter-bg.jpg" class="vc_row section-wrapper vc_row-has-fill vc_general vc_parallax vc_parallax-content-moving"><div class="tt-overlay" style="background-color: rgba(26,30,35,0.85)"></div><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner vc_custom_1462435414479"><div class="wpb_wrapper">
+	<div class="fact-wrap ">
+		
+			
+	<div class="count-wrap text-center col-sm-3  ">
+		
+		            <div class="tt-icon fontawesome-icon">
+                <i class="fa fa-flask custom-color " style="color:#ffffff"></i>
+            </div>
+        
+		<h3 style="color:#ffffff" class="timer">7</h3>
+		
+					<p style="color:#ffffff">Years of Experience</p>
+		
+	</div>
+
+		
+	<div class="count-wrap text-center col-sm-3  ">
+		
+		            <div class="tt-icon fontawesome-icon">
+                <i class="fa fa-thumbs-up custom-color " style="color:#ffffff"></i>
+            </div>
+        
+		<h3 style="color:#ffffff" class="timer">1651</h3>
+		
+					<p style="color:#ffffff">Projects Done</p>
+		
+	</div>
+
+		
+	<div class="count-wrap text-center col-sm-3  ">
+		
+		            <div class="tt-icon fontawesome-icon">
+                <i class="fa fa-bolt custom-color " style="color:#ffffff"></i>
+            </div>
+        
+		<h3 style="color:#ffffff" class="timer">251</h3>
+		
+					<p style="color:#ffffff">Happy Clients</p>
+		
+	</div>
+
+		
+	<div class="count-wrap text-center col-sm-3  ">
+		
+		            <div class="tt-icon fontawesome-icon">
+                <i class="fa fa-trophy custom-color " style="color:#ffffff"></i>
+            </div>
+        
+		<h3 style="color:#ffffff" class="timer">5</h3>
+		
+					<p style="color:#ffffff">Awards Won</p>
+		
+	</div>
+
+			
+	</div>
+	</div></div></div></div></section><section id="blog" class="vc_row section-wrapper vc_custom_1467136508118"><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+    <div class="section-intro  text-center  vc_custom_1460851505925">
+        <h2 style="" class="section-title wow fadeInUp">Latest Post</h2>
+
+                
+        
+        
+    </div> <!-- .section-intro -->
+
+
+		<div class="latest-post-wrapper 4">
+							<h2></h2>
+						
+			
+							
+								
+				<div class="col-sm-4">
+		            <article class="blog-post-wrapper">
+		              <div class="figure">    
+		                
+															<div class="post-thumbnail">
+									<a href="http://104.131.177.38/demo/wp/iamx/blog/top-10-mobile-app/">
+										<img width="340" height="225" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2019/08/13-340x225.jpg" class="img-responsive wp-post-image" alt="The goal of this new editor is to make adding rich content to WordPress" />									</a>
+								</div>
+							
+		              	</div><!-- /.figure -->
+		              	<header class="entry-header">
+			                <div class="post-meta">
+			                  	<span class="posted-in">
+				                    <a href="http://104.131.177.38/demo/wp/iamx/blog/category/uncategorized/" rel="category tag">Uncategorized</a>				                </span>
+			                </div>
+			                <h2 class="entry-title"><a href="http://104.131.177.38/demo/wp/iamx/blog/top-10-mobile-app/" rel="">The goal of this new editor is to make adding rich content to WordPress</a></h2>
+			                <hr>
+			                <div class="entry-meta">
+			                  	
+        <ul class="list-inline">
+            <li>
+                <span class="author vcard">
+                    <i class="fa fa-user"></i><a class="url fn n" href="http://104.131.177.38/demo/wp/iamx/blog/author/admin/">admin</a>                </span>
+            </li>
+
+            <li>
+                <i class="fa fa-calendar"></i>August 7, 2019            </li>
+
+            <li>
+                <span class="post-comments-number">
+                    <i class="fa fa-comments"></i><a href="http://104.131.177.38/demo/wp/iamx/blog/top-10-mobile-app/#respond">0</a>                </span>
+            </li>
+            
+                    </ul>
+    			                </div><!-- .entry-meta -->
+		              	</header><!-- .entry-header -->
+		            </article>					
+				</div>
+								
+				<div class="col-sm-4">
+		            <article class="blog-post-wrapper">
+		              <div class="figure">    
+		                
+															<div class="post-thumbnail">
+									<a href="http://104.131.177.38/demo/wp/iamx/blog/google-adwords-pay-per-clicks-free/">
+										<img width="340" height="225" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2019/08/blog-2-340x225.jpg" class="img-responsive wp-post-image" alt="Move your cursor around and you&#8217;ll notice the different blocks light" />									</a>
+								</div>
+							
+		              	</div><!-- /.figure -->
+		              	<header class="entry-header">
+			                <div class="post-meta">
+			                  	<span class="posted-in">
+				                    <a href="http://104.131.177.38/demo/wp/iamx/blog/category/uncategorized/" rel="category tag">Uncategorized</a>				                </span>
+			                </div>
+			                <h2 class="entry-title"><a href="http://104.131.177.38/demo/wp/iamx/blog/google-adwords-pay-per-clicks-free/" rel="">Move your cursor around and you&#8217;ll notice the different blocks light</a></h2>
+			                <hr>
+			                <div class="entry-meta">
+			                  	
+        <ul class="list-inline">
+            <li>
+                <span class="author vcard">
+                    <i class="fa fa-user"></i><a class="url fn n" href="http://104.131.177.38/demo/wp/iamx/blog/author/admin/">admin</a>                </span>
+            </li>
+
+            <li>
+                <i class="fa fa-calendar"></i>August 7, 2019            </li>
+
+            <li>
+                <span class="post-comments-number">
+                    <i class="fa fa-comments"></i><a href="http://104.131.177.38/demo/wp/iamx/blog/google-adwords-pay-per-clicks-free/#respond">0</a>                </span>
+            </li>
+            
+                    </ul>
+    			                </div><!-- .entry-meta -->
+		              	</header><!-- .entry-header -->
+		            </article>					
+				</div>
+								
+				<div class="col-sm-4">
+		            <article class="blog-post-wrapper">
+		              <div class="figure">    
+		                
+															<div class="post-thumbnail">
+									<a href="http://104.131.177.38/demo/wp/iamx/blog/how-to-create-a-print-ready-brochure-using-photoshop/">
+										<img width="340" height="225" src="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/03-340x225.jpg" class="img-responsive wp-post-image" alt="How to create a print ready brochure using photoshop" srcset="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/03-340x225.jpg 340w, http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2016/04/03-800x532.jpg 800w" sizes="(max-width: 340px) 100vw, 340px" />									</a>
+								</div>
+							
+		              	</div><!-- /.figure -->
+		              	<header class="entry-header">
+			                <div class="post-meta">
+			                  	<span class="posted-in">
+				                    <a href="http://104.131.177.38/demo/wp/iamx/blog/category/design/" rel="category tag">Design</a>				                </span>
+			                </div>
+			                <h2 class="entry-title"><a href="http://104.131.177.38/demo/wp/iamx/blog/how-to-create-a-print-ready-brochure-using-photoshop/" rel="">How to create a print ready brochure using photoshop</a></h2>
+			                <hr>
+			                <div class="entry-meta">
+			                  	
+        <ul class="list-inline">
+            <li>
+                <span class="author vcard">
+                    <i class="fa fa-user"></i><a class="url fn n" href="http://104.131.177.38/demo/wp/iamx/blog/author/admin/">admin</a>                </span>
+            </li>
+
+            <li>
+                <i class="fa fa-calendar"></i>April 17, 2018            </li>
+
+            <li>
+                <span class="post-comments-number">
+                    <i class="fa fa-comments"></i><a href="http://104.131.177.38/demo/wp/iamx/blog/how-to-create-a-print-ready-brochure-using-photoshop/#respond">0</a>                </span>
+            </li>
+            
+                    </ul>
+    			                </div><!-- .entry-meta -->
+		              	</header><!-- .entry-header -->
+		            </article>					
+				</div>
+				
+				
+			
+			
+		</div> <!-- .post-category-wrapper -->
+
+	</div></div></div></div></section><section data-vc-parallax="1.5" data-vc-parallax-image="http://104.131.177.38/demo/wp/iamx/wp-content/uploads/2015/11/hire-bg-1.jpg" class="vc_row section-wrapper vc_custom_1465280214674 vc_row-has-fill vc_row-o-content-middle vc_row-flex vc_general vc_parallax vc_parallax-content-moving"><div class="tt-overlay" style="background-color: rgba(104,195,163,0.7)"></div><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper"><h2 style="font-size: 36px;color: #ffffff;text-align: center" class="vc_custom_heading vc_custom_1460352398196">I'm available for freelance project</h2><div class="vc_btn3-container vc_btn3-center"><a class="vc_general vc_btn3 vc_btn3-size-md vc_btn3-shape-rounded vc_btn3-style-outline vc_btn3-color-white" href="#" title="" target="_self">GET HIRED</a></div>
+</div></div></div></div></section><section id="contact" class="vc_row section-wrapper vc_custom_1467136533390"><div class="container"><div class="row"><div class="wpb_column vc_column_container vc_col-sm-12"><div class="vc_column-inner "><div class="wpb_wrapper">
+    <div class="section-intro  text-center  vc_custom_1460353252369">
+        <h2 style="" class="section-title wow fadeInUp">Get in touch</h2>
+
+                
+        
+        
+    </div> <!-- .section-intro -->
+
+<div class="vc_row wpb_row vc_inner vc_row-fluid contact-section"><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner "><div class="wpb_wrapper"><h3 style="font-size: 14px;line-height: 28px;text-align: left" class="vc_custom_heading vc_custom_1464627285804">SEND ME A MESSAGE</h3><div role="form" class="wpcf7" id="wpcf7-f3297-p2320-o1" lang="en-US" dir="ltr">
+<div class="screen-reader-response"></div>
+<form action="/demo/wp/iamx/#wpcf7-f3297-p2320-o1" method="post" class="wpcf7-form" novalidate="novalidate">
+<div style="display: none;">
+<input type="hidden" name="_wpcf7" value="3297" />
+<input type="hidden" name="_wpcf7_version" value="5.1.4" />
+<input type="hidden" name="_wpcf7_locale" value="en_US" />
+<input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f3297-p2320-o1" />
+<input type="hidden" name="_wpcf7_container_post" value="2320" />
+</div>
+<div class="form-group">
+      <label>Name</label><br />
+      <span class="wpcf7-form-control-wrap text-129"><input type="text" name="text-129" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" id="required" aria-required="true" aria-invalid="false" /></span>
+    </div>
+<div class="form-group">
+      <label>Email</label><br />
+      <span class="wpcf7-form-control-wrap email-459"><input type="email" name="email-459" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-email form-control" id="email" aria-invalid="false" /></span>
+    </div>
+<div class="form-group">
+      <label>Subject</label><br />
+      <span class="wpcf7-form-control-wrap text-130"><input type="text" name="text-130" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required form-control" id="subject" aria-required="true" aria-invalid="false" /></span>
+    </div>
+<div class="form-group">
+      <label>Message</label><br />
+      <span class="wpcf7-form-control-wrap textarea-962"><textarea name="textarea-962" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea form-control" id="message" aria-invalid="false"></textarea></span>
+    </div>
+<p><input type="submit" value="Send Message" class="wpcf7-form-control wpcf7-submit btn btn-primary" /></p>
+<div class="wpcf7-response-output wpcf7-display-none"></div></form></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-6"><div class="vc_column-inner "><div class="wpb_wrapper">
+	<div class="wpb_raw_code wpb_content_element wpb_raw_html">
+		<div class="wpb_wrapper">
+			            <div class="row center-xs">
+              <div class="col-sm-6">
+                <i class="fa fa-map-marker"></i>
+                <address>
+                  <strong>Address/Street</strong>
+                  239/2 Awesome Street,<br>
+                  Boston, USA<br>
+                </address>
+              </div>
+
+              <div class="col-sm-6">
+                <i class="fa fa-mobile"></i>
+                <div class="contact-number">
+                  <strong>Phone Number</strong>
+                  (001) 0123 111222<br>
+                  (001) 0123 333444
+                </div>
+              </div>
+            </div>
+		</div>
+	</div>
+<div class="wpb_gmaps_widget wpb_content_element">
+		<div class="wpb_wrapper">
+		<div class="wpb_map_wraper">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6304.829986131271!2d-122.4746968033092!3d37.80374752160443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808586e6302615a1%3A0x86bd130251757c00!2sStorey+Ave%2C+San+Francisco%2C+CA+94129!5e0!3m2!1sen!2sus!4v1435826432051" width="600" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>		</div>
+	</div>
+</div>
+</div></div></div></div></div></div></div></div></section>
+
+		
+
+			<!-- Footer Section -->
+		    <footer class="footer-wrapper">
+		      <div class="container">
+		        <div class="row">
+		          <div class="col-md-12">
+					<div class="copyright text-center">
+			        
+					            
+							IAMX | Proudly powered by <a href='https://wordpress.org'>WordPress</a> | Designed by <a href='http://trendytheme.net'>TrendyTheme</a>					            
+
+			        					</div>
+		          </div>
+		        </div>
+		      </div>
+		    </footer><!-- End Footer Section -->        
+
+<link rel='stylesheet' id='vc_google_fonts_roboto100100italic300300italicregularitalic500500italic700700italic900900italic-css'  href='//fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C300%2C300italic%2Cregular%2Citalic%2C500%2C500italic%2C700%2C700italic%2C900%2C900italic&#038;ver=5.2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='vc_google_fonts_abril_fatfaceregular-css'  href='//fonts.googleapis.com/css?family=Abril+Fatface%3Aregular&#038;ver=5.2.5' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"http:\/\/104.131.177.38\/demo\/wp\/iamx\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.4'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/bootstrap.min.js?ver=3.3.6'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/owl.carousel.min.js'></script>
+<script type='text/javascript' src='//maps.googleapis.com/maps/api/js?sensor=true'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/jquery.countTo.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/coundown-timer.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/jquery.shuffle.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/smoothscroll.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/jquery.inview.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/jquery.easing.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/jquery.sticky.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/magnific-popup.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/jquery.stellar.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/jquery.placeholder.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/retina.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/sticky-sidebar.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/parallax.min.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/themes/iamx/js/scripts.js'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-includes/js/wp-embed.js?ver=5.2.5'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=4.9.2'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/lib/waypoints/waypoints.min.js?ver=4.9.2'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/lib/bower/progress-circle/ProgressCircle.min.js?ver=4.9.2'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/lib/vc_chart/jquery.vc_chart.min.js?ver=4.9.2'></script>
+<script type='text/javascript' src='http://104.131.177.38/demo/wp/iamx/wp-content/plugins/js_composer/assets/lib/bower/skrollr/dist/skrollr.min.js?ver=4.9.2'></script>
+</body>
 </html>
